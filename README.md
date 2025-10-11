@@ -2,6 +2,8 @@
 
 MoCC is a "museum" of the web’s most misleading charts. Each exhibit comments on what went wrong and cites the original source.
 
+- Live site: https://museum-chart-crimes.vercel.app/
+
 > Want to contribute? Feel free to open a PR with your favorite chart crime.
 
 ## Adding an Exhibit
@@ -35,4 +37,3 @@ Notes:
 - `npm run dev` – start the local development server.
 - `npm run build` – generate the production build.
 - `npm run start` – serve the production build locally.
-
