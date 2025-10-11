@@ -7,7 +7,10 @@ export function Intro() {
         {SITE_NAME}
       </h1>
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        {SITE_DESCRIPTION} Share your favorites to expand the collection.
+        {SITE_DESCRIPTION}
+        <span className="block">
+          Share your favorites to expand the collection.
+        </span>
       </h4>
     </section>
   );

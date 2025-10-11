@@ -5,13 +5,12 @@ import {
   SITE_NAME,
 } from "@/lib/constants";
 import type { Metadata } from "next";
-import { ThemeSwitcher } from "./_components/theme-switcher";
-
 import "./globals.css";
 
 const SITE_TITLE = SITE_NAME;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://museum-chart-crimes.vercel.app"),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   openGraph: {
@@ -48,16 +47,15 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
           name="msapplication-config"
           content="/favicon/browserconfig.xml"
         />
-        <meta name="theme-color" content="#000" />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className="dark:bg-slate-900 dark:text-slate-400">
-        <ThemeSwitcher />
+      <body className="bg-white text-slate-900">
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
