@@ -1,7 +1,7 @@
 ---
-title: "Exponential Growth of AI"
-excerpt: "Scale and Units are optional when you have AI"
-coverImage: "/assets/blog/gpt-5-swe-bench/cover.jpeg"
+title: "Exponential Growth in AI"
+excerpt: "Scale and units are optional when you have AI"
+coverImage: "/assets/blog/exponential-growth-in-ai/cover.jpeg"
 date: "2025-10-11"
 author:
   name: Haider (Twitter User)
