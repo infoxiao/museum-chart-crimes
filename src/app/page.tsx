@@ -22,6 +22,7 @@ export default function Index() {
           author={heroPost.author}
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
+          curators={heroPost.curator}
         />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>

@@ -1,8 +1,9 @@
-import Avatar from "@/app/_components/avatar";
 import CoverImage from "@/app/_components/cover-image";
 import { type Author } from "@/interfaces/author";
+import { type Curator } from "@/interfaces/curator";
 import Link from "next/link";
 import DateFormatter from "./date-formatter";
+import { CuratorList } from "./curator-list";
 
 type Props = {
   title: string;
@@ -11,6 +12,7 @@ type Props = {
   excerpt: string;
   author: Author;
   slug: string;
+  curators: Curator[];
 };
 
 export function HeroPost({
@@ -20,6 +22,7 @@ export function HeroPost({
   excerpt,
   author,
   slug,
+  curators,
 }: Props) {
   return (
     <section>
@@ -33,13 +36,19 @@ export function HeroPost({
               {title}
             </Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+          <div className="mb-4 md:mb-0 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
             <DateFormatter dateString={date} />
+            <CuratorList
+              curators={curators}
+              className="flex flex-wrap items-center gap-1 text-slate-500 dark:text-slate-300"
+            />
           </div>
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          <Avatar name={author.name} picture={author.picture} />
+          <p className="text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
+            Graph by {author.name}
+          </p>
         </div>
       </div>
     </section>

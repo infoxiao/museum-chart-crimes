@@ -1,4 +1,5 @@
 import { type Author } from "./author";
+import { type Curator } from "./curator";
 
 export type Post = {
   slug: string;
@@ -6,10 +7,8 @@ export type Post = {
   date: string;
   coverImage: string;
   author: Author;
+  curator: Curator[];
   excerpt: string;
-  ogImage: {
-    url: string;
-  };
   content: string;
   preview?: boolean;
 };

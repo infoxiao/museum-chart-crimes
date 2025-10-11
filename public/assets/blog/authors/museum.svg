@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="24" fill="#0f172a" />
+  <g stroke="#1e293b" stroke-width="1.5">
+    <line x1="36" y1="156" x2="164" y2="156" />
+    <line x1="36" y1="116" x2="164" y2="116" />
+    <line x1="36" y1="76" x2="164" y2="76" />
+  </g>
+  <g transform="translate(36 40)">
+    <rect x="12" y="28" width="32" height="128" rx="6" fill="#22d3ee" />
+    <rect x="58" y="68" width="32" height="88" rx="6" fill="#f97316" />
+    <rect x="104" y="28" width="32" height="128" rx="6" fill="#38bdf8" />
+  </g>
+  <rect x="45" y="130" width="110" height="48" rx="14" fill="#0f172a" opacity="0.9" stroke="#38bdf8" stroke-width="2" />
+  <text x="100" y="154" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#f8fafc" font-weight="700">MoCC</text>
+</svg>

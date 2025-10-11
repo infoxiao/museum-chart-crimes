@@ -1,72 +1,38 @@
-# A statically generated blog example using Next.js, Markdown, and TypeScript
+# Museum of Chart Crimes (MoCC)
 
-This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
+MoCC is a "museum" of the web’s most misleading charts. Each exhibit comments on what went wrong and cites the original source.
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates) feature using Markdown files as the data source.
+> Want to contribute? Feel free to open a PR with your favorite chart crime.
 
-The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
+## Adding an Exhibit
 
-To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
+1. Place your assets under `public/assets/blog/<slug>/` (the chart image is usually `cover.jpeg`).
+2. Create `_posts/<slug>.md` using the front matter template below.
+3. Write the body in Markdown. Include links for sources—MoCC underlines them automatically.
+4. Run `npm run build` to confirm the site still generates statically.
 
-## Demo
-
-[https://next-blog-starter.vercel.app/](https://next-blog-starter.vercel.app/)
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/blog-starter&project-name=blog-starter&repository-name=blog-starter)
-
-### Related examples
-
-- [AgilityCMS](/examples/cms-agilitycms)
-- [Builder.io](/examples/cms-builder-io)
-- [ButterCMS](/examples/cms-buttercms)
-- [Contentful](/examples/cms-contentful)
-- [Cosmic](/examples/cms-cosmic)
-- [DatoCMS](/examples/cms-datocms)
-- [DotCMS](/examples/cms-dotcms)
-- [Drupal](/examples/cms-drupal)
-- [Enterspeed](/examples/cms-enterspeed)
-- [Ghost](/examples/cms-ghost)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent.ai](/examples/cms-kontent-ai)
-- [MakeSwift](/examples/cms-makeswift)
-- [Payload](/examples/cms-payload)
-- [Plasmic](/examples/cms-plasmic)
-- [Prepr](/examples/cms-prepr)
-- [Prismic](/examples/cms-prismic)
-- [Sanity](/examples/cms-sanity)
-- [Sitecore XM Cloud](/examples/cms-sitecore-xmcloud)
-- [Sitefinity](/examples/cms-sitefinity)
-- [Storyblok](/examples/cms-storyblok)
-- [TakeShape](/examples/cms-takeshape)
-- [Tina](/examples/cms-tina)
-- [Umbraco](/examples/cms-umbraco)
-- [Umbraco heartcore](/examples/cms-umbraco-heartcore)
-- [Webiny](/examples/cms-webiny)
-- [WordPress](/examples/cms-wordpress)
-- [Blog Starter](/examples/blog-starter)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example blog-starter blog-starter-app
+```yaml
+---
+title: "Graph Title"
+excerpt: "One-line summary shown on the homepage."
+coverImage: "/assets/blog/<slug>/cover.jpeg"
+date: "2025-10-10"
+author:
+  name: Publisher of the original chart
+curator:
+  - name: Your Name
+    url: "https://example.com/profile"
+---
 ```
 
-```bash
-yarn create next-app --example blog-starter blog-starter-app
-```
+Notes:
+- `coverImage` renders inside the exhibit and doubles as the social share image.
+- `curator` accepts one or many entries—each renders as “Curated by …”.
+- Markdown supports tables, code fences, and inline HTML where needed.
 
-```bash
-pnpm create next-app --example blog-starter blog-starter-app
-```
+## Scripts
 
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+- `npm run dev` – start the local development server.
+- `npm run build` – generate the production build.
+- `npm run start` – serve the production build locally.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-# Notes
-
-`blog-starter` uses [Tailwind CSS](https://tailwindcss.com) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3).
