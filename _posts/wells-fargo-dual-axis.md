@@ -5,6 +5,7 @@ coverImage: "/assets/blog/wells-fargo-dual-axis/cover.jpeg"
 date: "2025-10-10"
 author:
   name: Wells Fargo
+  url: "https://www.wellsfargo.com/"
 curator:
   - name: "Xiao Ma"
     url: "https://x.com/infoxiao"

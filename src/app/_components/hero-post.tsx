@@ -24,6 +24,19 @@ export function HeroPost({
   slug,
   curators,
 }: Props) {
+  const authorByline = author.url ? (
+    <a
+      href={author.url}
+      className="underline hover:text-blue-600 transition-colors duration-200"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      {author.name}
+    </a>
+  ) : (
+    author.name
+  );
+
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -47,7 +60,7 @@ export function HeroPost({
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
           <p className="text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
-            Graph by {author.name}
+            Graph by {authorByline}
           </p>
         </div>
       </div>
