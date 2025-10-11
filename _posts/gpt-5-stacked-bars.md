@@ -4,8 +4,8 @@ excerpt: "52.8 is higher than 69.1 which is the same height as 30.8."
 coverImage: "/assets/blog/gpt-5-swe-bench/cover.jpeg"
 date: "2025-08-07"
 author:
-  name: OpenAI
-  url: "https://openai.com/"
+  - name: OpenAI
+    url: "https://openai.com/"
 curator:
   - name: "Xiao Ma"
     url: "https://x.com/infoxiao"

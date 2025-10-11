@@ -29,7 +29,7 @@ export default async function Post(props: Params) {
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}
-            author={post.author}
+            authors={post.author}
             curators={post.curator}
           />
           <PostBody content={content} />

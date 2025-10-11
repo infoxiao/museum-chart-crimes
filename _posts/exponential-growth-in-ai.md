@@ -4,8 +4,8 @@ excerpt: "Scale and units are optional when you have AI."
 coverImage: "/assets/blog/exponential-growth-in-ai/cover.jpeg"
 date: "2025-10-11"
 author:
-  name: Haider (Twitter User)
-  url: "https://x.com/slow_developer"
+  - name: Haider.
+    url: "https://x.com/slow_developer"
 curator:
   - name: "Arctic Byte"
     url: "https://x.com/arctic_byte"

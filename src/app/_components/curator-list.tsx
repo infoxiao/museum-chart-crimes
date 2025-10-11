@@ -18,20 +18,6 @@ export function CuratorList({ curators, className }: Props) {
     <div className={classes}>
       Curated by{" "}
       {curators.map((curator, index) => {
-        const showComma =
-          curators.length > 2 && index > 0 && index < curators.length - 1;
-        const showCommaAnd =
-          curators.length > 2 && index === curators.length - 1;
-        const showAnd = curators.length === 2 && index === 1;
-
-        const prefix = showComma
-          ? ", "
-          : showCommaAnd
-          ? ", and "
-          : showAnd
-          ? "and "
-          : "";
-
         const content = curator.url ? (
           <a
             href={curator.url}
@@ -47,7 +33,7 @@ export function CuratorList({ curators, className }: Props) {
 
         return (
           <span key={`${curator.name}-${index}`}>
-            {prefix}
+            {index > 0 && ", "}
             {content}
           </span>
         );

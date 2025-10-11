@@ -19,7 +19,7 @@ export default function Index() {
           title={heroPost.title}
           coverImage={heroPost.coverImage}
           date={heroPost.date}
-          author={heroPost.author}
+          authors={heroPost.author}
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
           curators={heroPost.curator}

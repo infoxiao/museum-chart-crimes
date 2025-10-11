@@ -10,7 +10,7 @@ type Props = {
   coverImage: string;
   date: string;
   excerpt: string;
-  author: Author;
+  authors: Author[];
   slug: string;
   curators: Curator[];
 };
@@ -20,22 +20,33 @@ export function HeroPost({
   coverImage,
   date,
   excerpt,
-  author,
+  authors,
   slug,
   curators,
 }: Props) {
-  const authorByline = author.url ? (
-    <a
-      href={author.url}
-      className="underline hover:text-blue-600 transition-colors duration-200"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      {author.name}
-    </a>
-  ) : (
-    author.name
-  );
+  const hasAuthors = authors.length > 0;
+
+  const authorByline = authors.map((person, index) => {
+    const content = person.url ? (
+      <a
+        href={person.url}
+        className="underline hover:text-blue-600 transition-colors duration-200"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {person.name}
+      </a>
+    ) : (
+      person.name
+    );
+
+    return (
+      <span key={`author-${person.name}-${index}`}>
+        {index > 0 && ", "}
+        {content}
+      </span>
+    );
+  });
 
   return (
     <section>
@@ -59,9 +70,11 @@ export function HeroPost({
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          <p className="text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
-            Graph by {authorByline}
-          </p>
+          {hasAuthors && (
+            <p className="text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
+              Graph by {authorByline}
+            </p>
+          )}
         </div>
       </div>
     </section>

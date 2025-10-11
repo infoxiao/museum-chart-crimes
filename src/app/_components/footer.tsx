@@ -12,13 +12,13 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
             <a
               href={`${SOURCE_REPO_URL}/issues/new`}
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
+              className="mx-3 bg-[#00b7f2] border border-[#00b7f2] text-black font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
             >
               Submit a chart crime
             </a>
             <a
               href={SOURCE_REPO_URL}
-              className="mx-3 font-bold hover:underline"
+              className="mx-3 font-bold"
             >
               Contribute on GitHub
             </a>

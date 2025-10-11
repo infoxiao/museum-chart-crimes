@@ -9,7 +9,7 @@ type Props = {
   title: string;
   coverImage: string;
   date: string;
-  author: Author;
+  authors: Author[];
   curators: Curator[];
 };
 
@@ -17,35 +17,50 @@ export function PostHeader({
   title,
   coverImage,
   date,
-  author,
+  authors,
   curators,
 }: Props) {
-  const authorByline = author.url ? (
-    <a
-      href={author.url}
-      className="underline hover:text-blue-600 transition-colors duration-200"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      {author.name}
-    </a>
-  ) : (
-    author.name
-  );
+  const hasAuthors = authors.length > 0;
+
+  const authorByline = authors.map((person, index) => {
+    const content = person.url ? (
+      <a
+        href={person.url}
+        className="underline hover:text-blue-600 transition-colors duration-200"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {person.name}
+      </a>
+    ) : (
+      person.name
+    );
+
+    return (
+      <span key={`author-${person.name}-${index}`}>
+        {index > 0 && ", "}
+        {content}
+      </span>
+    );
+  });
 
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12 text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
-        Graph by {authorByline}
-      </div>
+      {hasAuthors && (
+        <div className="hidden md:block md:mb-12 text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
+          Graph by {authorByline}
+        </div>
+      )}
       <div className="mb-8 md:mb-16 sm:mx-0">
         <CoverImage title={title} src={coverImage} />
       </div>
       <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6 text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
-          Graph by {authorByline}
-        </div>
+        {hasAuthors && (
+          <div className="block md:hidden mb-6 text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
+            Graph by {authorByline}
+          </div>
+        )}
         <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm uppercase tracking-wide text-slate-500 dark:text-slate-300">
           <DateFormatter dateString={date} />
           <CuratorList

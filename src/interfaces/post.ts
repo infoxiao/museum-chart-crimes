@@ -6,7 +6,7 @@ export type Post = {
   title: string;
   date: string;
   coverImage: string;
-  author: Author;
+  author: Author[];
   curator: Curator[];
   excerpt: string;
   content: string;

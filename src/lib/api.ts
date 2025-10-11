@@ -1,3 +1,4 @@
+import { type Author } from "@/interfaces/author";
 import { type Curator } from "@/interfaces/curator";
 import { Post } from "@/interfaces/post";
 import fs from "fs";
@@ -16,9 +17,25 @@ export function getPostBySlug(slug: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const curator = normalizeCurator(data.curator);
+  const normalizedPeople = {
+    author: normalizePeople(data.author),
+    curator: normalizePeople(data.curator),
+  };
 
-  return { ...data, curator, slug: realSlug, content } as Post;
+  const author: Author[] = normalizedPeople.author.map(({ name, url }) => ({
+    name,
+    ...(url ? { url } : {}),
+  }));
+
+  const curator: Curator[] = normalizedPeople.curator.map(
+    ({ name, url, picture }) => ({
+      name,
+      ...(url ? { url } : {}),
+      ...(picture ? { picture } : {}),
+    }),
+  );
+
+  return { ...data, author, curator, slug: realSlug, content } as Post;
 }
 
 export function getAllPosts(): Post[] {
@@ -30,45 +47,64 @@ export function getAllPosts(): Post[] {
   return posts;
 }
 
-function normalizeCurator(curatorData: unknown): Curator[] {
-  if (!curatorData) {
+type NormalizedPerson = {
+  name: string;
+  url?: string;
+  picture?: string;
+};
+
+function normalizePeople(input: unknown): NormalizedPerson[] {
+  if (!input) {
     return [];
   }
 
-  if (Array.isArray(curatorData)) {
-    return curatorData
-      .map((entry) => normalizeCuratorEntry(entry))
-      .filter((entry): entry is Curator => Boolean(entry));
-  }
+  const entries = Array.isArray(input) ? input : [input];
 
-  const normalized = normalizeCuratorEntry(curatorData);
-
-  return normalized ? [normalized] : [];
+  return entries
+    .map((entry) => normalizePerson(entry))
+    .filter((entry): entry is NormalizedPerson => Boolean(entry));
 }
 
-function normalizeCuratorEntry(entry: unknown): Curator | null {
+function normalizePerson(entry: unknown): NormalizedPerson | null {
   if (!entry) {
     return null;
   }
 
   if (typeof entry === "string") {
-    return { name: entry };
+    const trimmed = entry.trim();
+    return trimmed.length > 0 ? { name: trimmed } : null;
   }
 
-  if (typeof entry === "object" && "name" in entry) {
+  if (typeof entry === "object" && entry !== null && "name" in entry) {
     const candidate = entry as {
       name?: unknown;
       url?: unknown;
       picture?: unknown;
     };
-    if (typeof candidate.name === "string" && candidate.name.trim().length > 0) {
-      return {
-        name: candidate.name,
-        url: typeof candidate.url === "string" ? candidate.url : undefined,
-        picture:
-          typeof candidate.picture === "string" ? candidate.picture : undefined,
-      };
+
+    if (typeof candidate.name !== "string") {
+      return null;
     }
+
+    const name = candidate.name.trim();
+    if (!name) {
+      return null;
+    }
+
+    const normalized: NormalizedPerson = { name };
+
+    if (typeof candidate.url === "string" && candidate.url.trim().length > 0) {
+      normalized.url = candidate.url;
+    }
+
+    if (
+      typeof candidate.picture === "string" &&
+      candidate.picture.trim().length > 0
+    ) {
+      normalized.picture = candidate.picture;
+    }
+
+    return normalized;
   }
 
   return null;

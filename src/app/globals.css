@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+@layer base {
+  html {
+    font-family: "Libre Franklin", "Franklin Gothic Medium", "Franklin Gothic",
+      "ITC Franklin Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    letter-spacing: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    line-height: 1.05;
+  }
 }
