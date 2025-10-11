@@ -29,6 +29,7 @@ curator:
 
 Notes:
 - `coverImage` renders inside the exhibit and doubles as the social share image.
+- Use the original chart title for `title` whenever possible.
 - `curator` accepts one or many entries—each renders as “Curated by …”.
 - Markdown supports tables, code fences, and inline HTML where needed.
 
