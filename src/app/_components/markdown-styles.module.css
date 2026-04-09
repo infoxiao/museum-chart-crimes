@@ -9,6 +9,10 @@
   @apply my-6;
 }
 
+.markdown img {
+  @apply max-w-full h-auto my-6 rounded-sm;
+}
+
 .markdown h2 {
   @apply text-3xl mt-12 mb-4 leading-snug;
 }
